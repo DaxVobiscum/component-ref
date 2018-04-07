@@ -18,9 +18,11 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      for (let i = 0; i < 5; i++) {
-        this.builder.createComponent(this.component);
-      }
+      this.builder.createComponent(this.component);
     });
+  }
+
+  killme() {
+    this.builder.ngOnDestroy();
   }
 }
