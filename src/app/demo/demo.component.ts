@@ -5,7 +5,7 @@ import { TemplateComponent, TemplateContext } from '../model';
 @Component ({
   selector: 'app-demo-component',
   template: `
-    <ng-template #template>
+    <ng-template>
       <div>{{ name }}: {{ getCount() }}</div>
       <div>
         <div>Default Context:</div>
