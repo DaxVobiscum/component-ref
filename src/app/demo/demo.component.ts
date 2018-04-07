@@ -1,8 +1,9 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
-import { BaseComponent, TemplateContext } from './model';
+
+import { TemplateComponent, TemplateContext } from '../model';
 
 @Component ({
-  selector: 'app-test-component',
+  selector: 'app-demo-component',
   template: `
     <ng-template #template>
       <div>{{ name }}: {{ getCount() }}</div>
@@ -17,7 +18,7 @@ import { BaseComponent, TemplateContext } from './model';
     </ng-template>
   `
 })
-export class TestComponent extends BaseComponent implements OnInit, OnDestroy {
+export class DemoComponent extends TemplateComponent implements OnInit, OnDestroy {
 
   name = 'Test Component';
 

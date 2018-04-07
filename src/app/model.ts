@@ -5,7 +5,7 @@ export class TemplateContext {
   other?: any;
 }
 
-export abstract class BaseComponent implements OnInit, OnDestroy {
+export abstract class TemplateComponent implements OnInit, OnDestroy {
   @ViewChild(TemplateRef) template: TemplateRef<TemplateContext>;
   defaultContext: DefaultContext;
   templateContext: TemplateContext;

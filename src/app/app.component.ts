@@ -1,20 +1,19 @@
-import { Component, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 
-import { BuilderComponent } from './builder/builder.component';
+import { TemplateOutletComponent } from './template-outlet/template-outlet.component';
 
-import { TestComponent } from './test.component';
+import { DemoComponent } from './demo/demo.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-  @ViewChildren(BuilderComponent) builders: QueryList<BuilderComponent>;
+  @ViewChildren(TemplateOutletComponent) outlets: QueryList<TemplateOutletComponent>;
 
-  title = 'app';
-  component = TestComponent;
+  component = DemoComponent;
 
   contextA = {
     $implicit: {
@@ -27,18 +26,13 @@ export class AppComponent implements AfterViewInit {
   contextB = {
     $implicit: {
       foo: 'baz',
-      test: 'success'
+      test: 'case'
     },
-    other: 'Benjamin Linus'
+    other: 'thing'
   };
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.builders.forEach(builder => builder.createComponent(this.component));
-    });
-  }
-
-  killBuilders() {
-    this.builders.forEach(builder => builder.ngOnDestroy());
+  destroyOutlets() {
+    this.outlets.forEach(outlet => outlet.ngOnDestroy());
+    console.log('Outlets destroyed.');
   }
 }
