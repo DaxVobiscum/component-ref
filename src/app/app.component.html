@@ -1,2 +1,3 @@
-<button type="button" (click)="killme()">Kill Me</button>
-<app-builder></app-builder>
+<button type="button" (click)="killBuilders()">Kill Builders</button>
+<app-builder [templateContext]="contextA"></app-builder>
+<app-builder [templateContext]="contextB"></app-builder>

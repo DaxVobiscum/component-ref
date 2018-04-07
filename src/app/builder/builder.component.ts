@@ -22,8 +22,9 @@ import { BaseComponent, TemplateContext } from '../model';
 })
 export class BuilderComponent implements OnInit, OnDestroy {
 
+  @Input() templateContext: TemplateContext;
+
   template: TemplateRef<TemplateContext>;
-  templateContext: TemplateContext;
 
   cInstance: BaseComponent;
 
@@ -31,15 +32,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
     private cfResolver: ComponentFactoryResolver,
     private cRef: ViewContainerRef,
     private injector: Injector
-  ) {
-    this.templateContext = {
-      $implicit: {
-        foo: 'bar',
-        test: 'test'
-      },
-      other: 'value'
-    };
-  }
+  ) { }
 
   ngOnInit() {
   }
@@ -54,7 +47,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
     const tcFactory: ComponentFactory<BaseComponent> = this.cfResolver.resolveComponentFactory(component);
     this.cInstance = tcFactory.create(this.injector).instance;
     setTimeout(() => {
-      this.cInstance.ngAfterViewInit();
+      this.cInstance.ngOnInit();
       this.cInstance.setContext(this.templateContext);
       this.template = this.cInstance.getTemplate();
       if (!this.template) {

@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { BaseComponent, TemplateContext } from './model';
 
 @Component ({
@@ -17,7 +17,7 @@ import { BaseComponent, TemplateContext } from './model';
     </ng-template>
   `
 })
-export class TestComponent extends BaseComponent implements AfterViewInit, OnDestroy {
+export class TestComponent extends BaseComponent implements OnInit, OnDestroy {
 
   name = 'Test Component';
 
@@ -32,11 +32,7 @@ export class TestComponent extends BaseComponent implements AfterViewInit, OnDes
     }, 1000);
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      //
-    });
-  }
+  ngOnInit() { }
 
   ngOnDestroy() {
     clearInterval(this.interval);
